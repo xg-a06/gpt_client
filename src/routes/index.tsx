@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useRoutes, BrowserRouter } from 'react-router-dom';
 import { User } from '@/services/types/user';
-import { useCheckLogin } from '@/services/userService';
+// import { useCheckLogin } from '@/services/userService';
 import routes from './config';
 
 interface PropTypes {
@@ -13,14 +13,11 @@ const Routes: FC<PropTypes> = ({ auth = {} }) => {
   return routing;
 };
 
-const Router = () => {
-  const { data } = useCheckLogin();
+const Router = () => (
+  // const { data } = useCheckLogin();
 
-  return (
-    <BrowserRouter>
-      <Routes auth={data} />
-    </BrowserRouter>
-  );
-};
-
+  <BrowserRouter>
+    <Routes auth={undefined} />
+  </BrowserRouter>
+);
 export default Router;
