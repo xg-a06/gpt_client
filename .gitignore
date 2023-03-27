@@ -4,6 +4,7 @@ dist
 compiled
 docs
 
+.pnpm-store
 .eslintcache
 .nyc_output
 .DS_Store
