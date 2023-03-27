@@ -3,19 +3,8 @@ const path = require('path');
 const config = {
   buildDetail: false,
   devServer: {
-    // static: {
-    //   directory: path.resolve(__dirname, '../dist'),
-    // },
-    client: {
-      // Can be `string`:
-      //
-      // To get protocol/hostname/port from browser
-      // webSocketURL: 'auto://0.0.0.0:0/ws'
-      // webSocketURL: {
-      //   hostname: '0.0.0.0',
-      //   pathname: '/ws',
-      //   port: 8789,
-      // },
+    static: {
+      directory: path.resolve(__dirname, '../dist'),
     },
     port: 2233,
     hot: true,
@@ -33,15 +22,12 @@ const config = {
       '/api': {
         target: 'http://172.16.7.22:8000/',
         changeOrigin: true,
-        // pathRewrite: {
-        //   '^/xxx': '/',
-        // },
       },
     },
   },
   local: {
     API_PATH: '/api',
-    TIME_OUT: 1000 * 120, //两分钟
+    TIME_OUT: 1000 * 120, // 两分钟
     SUB_DIR: 'static',
     PUBLIC_PATH: '/',
   },

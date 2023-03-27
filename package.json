@@ -92,6 +92,9 @@
     "src/**/*.{ts,tsx}": [
       "eslint --cache --fix",
       "prettier --write"
+    ],
+    "src/**/*.{css,less}": [
+      "prettier --write"
     ]
   }
 }

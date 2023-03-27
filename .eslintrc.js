@@ -52,5 +52,6 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 0,
     'no-plusplus': 0,
     'no-restricted-globals': 0,
+    '@typescript-eslint/no-var-requires': 0,
   },
 };
