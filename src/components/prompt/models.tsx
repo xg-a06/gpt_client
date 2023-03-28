@@ -1,35 +1,38 @@
-import { useMemo, useState } from 'react';
+import type { FC } from 'react';
+import type { Updater } from 'use-immer';
+import type { SelectEventHandler } from 'rc-menu/lib/interface';
+import type { App, Chat } from '@/store/app';
+import { useState, useEffect, memo } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Button } from 'antd';
-import type { MenuItemType, SelectEventHandler } from 'rc-menu/lib/interface';
 import style from './style.less';
 
-type MenuItemTypeEx = MenuItemType & {
-  key: string;
+type PropTypes = {
+  models: App['models'];
+  modelLabel: string;
+  currentModel: string;
+  handleChange: Updater<Chat>;
 };
-const items: MenuItemTypeEx[] = [
-  {
-    key: 'gpt-3.5-turbo',
-    label: 'GTP-3.5',
-  },
-  {
-    key: 'gpt-4',
-    label: 'GTP-4(coming soon)',
-    disabled: true,
-  },
-  {
-    key: 'gpt-4-32k',
-    label: 'GTP-4-32K(coming soon)',
-    disabled: true,
-  },
-];
 
-const Models = () => {
-  const [selected, setSelected] = useState([items[0]!.key]);
+const Models: FC<PropTypes> = ({ models, modelLabel, currentModel, handleChange }) => {
+  const [selected, setSelected] = useState([models[0]?.key || '']);
 
-  const selectLabel = useMemo(() => items.find(item => item.key === selected[0])?.label || '', [selected]);
+  useEffect(() => {
+    if (currentModel) {
+      setSelected([currentModel]);
+    } else {
+      handleChange(draft => {
+        const [value] = selected;
+        draft.model = value;
+      });
+    }
+  }, [currentModel]);
+
   const selectHandler: SelectEventHandler = info => {
-    setSelected(info.selectedKeys);
+    handleChange(draft => {
+      const [value] = info.selectedKeys;
+      draft.model = value;
+    });
   };
 
   return (
@@ -38,7 +41,7 @@ const Models = () => {
         trigger={['click']}
         getPopupContainer={() => document.getElementsByClassName(style['model-container'])[0] as HTMLElement}
         menu={{
-          items,
+          items: models,
           selectable: true,
           selectedKeys: selected,
           onSelect: selectHandler,
@@ -46,7 +49,7 @@ const Models = () => {
       >
         <div className="select-label">
           <div className="select-tips">Model</div>
-          {selectLabel}
+          {modelLabel}
           <DownOutlined />
         </div>
       </Dropdown>
@@ -54,4 +57,4 @@ const Models = () => {
   );
 };
 
-export default Models;
+export default memo(Models);

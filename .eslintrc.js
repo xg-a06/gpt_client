@@ -55,5 +55,6 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     'react/no-unstable-nested-components': 0,
     'no-return-assign': 0,
+    'react/no-array-index-key': 0,
   },
 };

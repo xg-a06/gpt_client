@@ -73,6 +73,7 @@ specifiers:
   style-loader: ^3.3.2
   typescript: ^5.0.2
   typescript-plugin-css-modules: ^5.0.0
+  use-immer: ^0.8.1
   webpack: ^5.76.3
   webpack-bundle-analyzer: ^4.8.0
   webpack-cli: ^4.10.0
@@ -95,6 +96,7 @@ dependencies:
   rehype-mathjax: 4.0.2
   remark-gfm: 3.0.1
   remark-math: 5.1.1
+  use-immer: 0.8.1_immer@9.0.21+react@18.2.0
   zustand: 4.3.6_immer@9.0.21+react@18.2.0
 
 devDependencies:
@@ -10987,6 +10989,16 @@ packages:
     dependencies:
       querystringify: 2.2.0
       requires-port: 1.0.0
+    dev: false
+
+  /use-immer/0.8.1_immer@9.0.21+react@18.2.0:
+    resolution: {integrity: sha512-OfTFf1pL+ICjjcLPn9+ZnaJO/Yg4MBzYZtACEe2mZ/W2A5col28PNUnwowOAaBuOogACOK/37TU17KgsIhUpOw==}
+    peerDependencies:
+      immer: '>=2.0.0'
+      react: ^16.8.0 || ^17.0.1 || ^18.0.0
+    dependencies:
+      immer: 9.0.21
+      react: 18.2.0
     dev: false
 
   /use-sync-external-store/1.2.0_react@18.2.0:

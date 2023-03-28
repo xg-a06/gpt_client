@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import createModel from '@/store/util';
 
-type Model = {
+export type Model = {
   key: string;
   label: string;
-  disabled: boolean;
+  disabled?: boolean;
 };
 
-type Dialogue = {
+export type Dialogue = {
   role: 'user' | 'assistant';
   content: string;
 };
 
-type Chat = {
+export type Chat = {
   id: string;
   title: string;
   model: string;
@@ -24,9 +24,9 @@ type Chat = {
 //   [key: string]: Chat;
 // };
 
-type Chats = Chat[];
+export type Chats = Chat[];
 
-interface Store {
+export type App = {
   key: string;
   models: Model[];
   chats: Chats;
@@ -35,12 +35,27 @@ interface Store {
   removeChat(id: string): void;
   // updateTodo(id: number, value: boolean): void;
   // toggleFilter(filter: Filter): void;
-}
+};
 
 let index = 1;
-const model = createModel<Store>({
+const model = createModel<App>({
   key: 'app',
-  models: [],
+  models: [
+    {
+      key: 'gpt-3.5-turbo',
+      label: 'GTP-3.5',
+    },
+    {
+      key: 'gpt-4',
+      label: 'GTP-4(coming soon)',
+      // disabled: true,
+    },
+    {
+      key: 'gpt-4-32k',
+      label: 'GTP-4-32K(coming soon)',
+      disabled: true,
+    },
+  ],
   chats: [],
   currentChat: '0',
   addChat(chat) {
