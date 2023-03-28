@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import { ConfigProvider } from 'antd';
 import { ErrorBoundary } from 'react-error-boundary';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -34,10 +35,18 @@ const App = () => {
       }}
     >
       <Suspense fallback={<div>loading...</div>}>
-        <QueryClientProvider client={queryClient}>
-          <Router />
-          <ReactQueryDevtools />
-        </QueryClientProvider>
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: 'rgb(70, 178, 133)',
+            },
+          }}
+        >
+          <QueryClientProvider client={queryClient}>
+            <Router />
+            <ReactQueryDevtools />
+          </QueryClientProvider>
+        </ConfigProvider>
       </Suspense>
     </ErrorBoundary>
   );

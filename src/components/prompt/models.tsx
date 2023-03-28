@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Button } from 'antd';
-import type { MenuItemType, SelectEventHandler } from 'node_modules/.pnpm/rc-menu@9.8.2_biqbaboplfbrettd7655fr4n2y/node_modules/rc-menu/lib/interface';
+import type { MenuItemType, SelectEventHandler } from 'rc-menu/lib/interface';
 import style from './style.less';
 
 type MenuItemTypeEx = MenuItemType & {

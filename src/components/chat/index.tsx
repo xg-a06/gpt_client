@@ -4,7 +4,9 @@ import style from './style.less';
 
 const Chat = () => (
   <div className={style['chat-container']}>
-    <Button icon={<PlusOutlined />}>New chat</Button>
+    <Button disabled icon={<PlusOutlined />}>
+      New chat(coming soon)
+    </Button>
   </div>
 );
 

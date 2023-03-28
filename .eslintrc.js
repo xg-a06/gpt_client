@@ -53,5 +53,7 @@ module.exports = {
     'no-plusplus': 0,
     'no-restricted-globals': 0,
     '@typescript-eslint/no-var-requires': 0,
+    'react/no-unstable-nested-components': 0,
+    'no-return-assign': 0,
   },
 };
